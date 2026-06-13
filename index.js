@@ -82,8 +82,7 @@ app.use("/uploads", express.static("uploads"));
 
 
 const allowedOrigins = [
-  "https://www.creativewebsolution.life",
-  "http://localhost:5173",
+  "https://cws-tms-frontend.vercel.app",
 ];
 
 app.use((req, res, next) => {
@@ -769,7 +768,7 @@ console.log("Calculated probationEndDate:", probationEndDate);
       newEmployee.verifyToken = token;
       await newEmployee.save();
 
-      const verifyLink = `http://localhost:5173/employee/verify/${
+      const verifyLink = `https://cws-tms-frontend.vercel.app/employee/verify/${
         newEmployee._id
       }/${encodeURIComponent(token)}`;
 
@@ -1807,7 +1806,7 @@ app.post("/sendpasswordlink", async (req, res) => {
       { new: true },
     );
     //console.log("setusertoken",setusertoken)
-    const forLink = `http://localhost:5173/forgotpassword/${userfind._id}/${setusertoken.verifytoken}`;
+    const forLink = `https://cws-tms-frontend.vercel.app/forgotpassword/${userfind._id}/${setusertoken.verifytoken}`;
     const resetPasswordHtml = await rePasswordTemplate(forLink);
 
     if (setusertoken) {
